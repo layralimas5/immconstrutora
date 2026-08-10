@@ -1,0 +1,106 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+
+  /* Identidade IMM: branco, azul e vermelho */
+  --color-paper: #ffffff;
+  --color-surface: #f4f6fa;
+  --color-surface-2: #e9edf4;
+  --color-line: #dfe4ed;
+
+  --color-ink: #0b1220;
+  --color-ink-soft: #47536b;
+  --color-ink-mute: #6b7689;
+
+  --color-navy-50: #eef2fb;
+  --color-navy-100: #d6e0f5;
+  --color-navy-400: #3b5cb0;
+  --color-navy-600: #1e3f8a;
+  --color-navy: #14306b;
+  --color-navy-deep: #0c1e45;
+  --color-navy-ink: #071431;
+
+  --color-brand-red: #e11d2a;
+  --color-brand-red-dark: #b8141f;
+  --color-brand-red-soft: #fdeaec;
+
+  --shadow-soft: 0 10px 28px rgba(11, 18, 32, 0.08);
+  --shadow-lift: 0 22px 60px -18px rgba(12, 30, 69, 0.35);
+
+  --radius-card: 16px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o header fixo ao navegar por âncoras */
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand-red);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-red);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Régua vermelha do design guide */
+  .rule-red::before {
+    content: '';
+    display: block;
+    width: 72px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: var(--color-brand-red);
+    margin-bottom: 1.25rem;
+  }
+
+  .rule-red-center::before {
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
