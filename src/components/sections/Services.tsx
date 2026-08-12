@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/icons'
 import { services, type ServiceIcon } from '@/content/site'
 import { whatsappLink } from '@/lib/whatsapp'
+import { trackWhatsAppClick } from '@/lib/analytics'
 
 const iconByName: Record<ServiceIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
   brush: BrushIcon,
@@ -22,12 +23,12 @@ const iconByName: Record<ServiceIcon, ComponentType<SVGProps<SVGSVGElement>>> = 
 
 export function Services() {
   return (
-    <Section id="servicos" labelledBy="servicos-titulo" className="bg-white">
+    <Section id="servicos" labelledBy="servicos-titulo" className="bg-surface">
       <SectionHeading
         id="servicos-titulo"
         eyebrow="Nossos serviços"
-        title="Soluções completas para a sua obra"
-        description="Do preparo da superfície ao toque final, cuidamos de cada etapa. O resultado aparece na parede e na hora de conviver com a obra."
+        title="O que a IMM faz em Vila Velha e Vitória"
+        description="Do preparo da superfície ao toque final, cuidamos de cada etapa. Escolha o serviço e peça o orçamento direto pelo WhatsApp."
       />
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2">
@@ -45,6 +46,7 @@ export function Services() {
                 </span>
 
                 <h3 className="mt-6 text-xl font-extrabold text-ink">{service.title}</h3>
+                <p className="mt-1.5 text-sm font-semibold text-navy">{service.searchTerm}</p>
                 <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
                   {service.description}
                 </p>
@@ -58,12 +60,17 @@ export function Services() {
                   ))}
                 </ul>
 
+                <p className="mt-6 rounded-xl bg-surface px-4 py-3 text-sm font-semibold text-ink">
+                  {service.idealFor}
+                </p>
+
                 <a
                   href={whatsappLink(
                     `Olá! Vim pelo site e gostaria de um orçamento de ${service.title.toLowerCase()}.`,
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick('servico', service.id)}
                   className="mt-auto inline-flex items-center gap-2 self-start pt-7 text-sm font-bold text-navy transition-colors hover:text-brand-red"
                 >
                   Pedir orçamento deste serviço
@@ -76,7 +83,7 @@ export function Services() {
       </div>
 
       <Reveal delay={0.1}>
-        <div className="mt-14 flex flex-col items-center gap-5 rounded-card border border-line bg-surface px-7 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-14 flex flex-col items-center gap-5 rounded-card border border-line bg-white px-7 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
             <h3 className="text-xl font-extrabold text-ink">Não achou o que precisa?</h3>
             <p className="mt-2 text-[15px] text-ink-soft">
@@ -91,6 +98,7 @@ export function Services() {
             variant="secondary"
             size="lg"
             className="shrink-0"
+            onClick={() => trackWhatsAppClick('servicos_rodape')}
           >
             Falar com a IMM
           </LinkButton>

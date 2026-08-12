@@ -21,6 +21,8 @@
   --color-navy: #14306b;
   --color-navy-deep: #0c1e45;
   --color-navy-ink: #071431;
+  /* Um degrau abaixo do navy-ink. Fecha a página com o tom mais escuro da escala. */
+  --color-navy-night: #040d21;
 
   --color-brand-red: #e11d2a;
   --color-brand-red-dark: #b8141f;
@@ -30,6 +32,32 @@
   --shadow-lift: 0 22px 60px -18px rgba(12, 30, 69, 0.35);
 
   --radius-card: 16px;
+
+  /* Faixa de destaques em loop infinito (TrustBar) */
+  --animate-marquee: marquee 60s linear infinite;
+
+  /* Pulsar no hover de cards. Amplitude suficiente para o movimento ser
+     percebido, sem chegar a sacudir o texto. */
+  --animate-pulse-soft: pulse-soft 1.4s ease-in-out infinite;
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.045);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {

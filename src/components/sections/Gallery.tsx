@@ -5,6 +5,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { LinkButton } from '@/components/ui/Button'
 import { CloseIcon, InstagramIcon } from '@/components/ui/icons'
 import { company, gallery } from '@/content/site'
+import { trackEvent } from '@/lib/analytics'
 
 export function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -47,6 +48,7 @@ export function Gallery() {
           rel="noopener noreferrer"
           variant="ghost"
           className="shrink-0"
+          onClick={() => trackEvent('instagram_click', { location: 'trabalhos' })}
         >
           <InstagramIcon className="h-4 w-4" />
           Ver mais no Instagram
@@ -59,7 +61,10 @@ export function Gallery() {
             <div className="h-full">
               <button
                 type="button"
-                onClick={() => setOpenIndex(index)}
+                onClick={() => {
+                  setOpenIndex(index)
+                  trackEvent('gallery_open', { image: item.tag })
+                }}
                 className="group relative block h-full w-full overflow-hidden rounded-card border border-line text-left"
                 aria-label={`Ampliar imagem: ${item.caption}`}
               >

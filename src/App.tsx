@@ -5,13 +5,17 @@ import { Hero } from '@/components/sections/Hero'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { Services } from '@/components/sections/Services'
 import { Differentials } from '@/components/sections/Differentials'
+import { Guarantees } from '@/components/sections/Guarantees'
 import { Process } from '@/components/sections/Process'
 import { Gallery } from '@/components/sections/Gallery'
 import { ServiceArea } from '@/components/sections/ServiceArea'
 import { Faq } from '@/components/sections/Faq'
 import { QuoteForm } from '@/components/sections/QuoteForm'
+import { useFunnelTracking } from '@/hooks/useFunnelTracking'
 
 export default function App() {
+  useFunnelTracking()
+
   return (
     <>
       <a
@@ -28,6 +32,7 @@ export default function App() {
         <TrustBar />
         <Services />
         <Differentials />
+        <Guarantees />
         <Process />
         <Gallery />
         <ServiceArea />

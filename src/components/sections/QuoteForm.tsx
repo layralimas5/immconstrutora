@@ -1,10 +1,11 @@
-import { useId, useState, type FormEvent } from 'react'
+import { useId, useRef, useState, type FormEvent } from 'react'
 import { Section } from '@/components/ui/Section'
 import { Reveal } from '@/components/ui/Reveal'
 import { ActionButton, LinkButton } from '@/components/ui/Button'
 import { PhoneIcon, WhatsAppIcon } from '@/components/ui/icons'
 import { company, quoteServiceOptions } from '@/content/site'
 import { whatsappLink } from '@/lib/whatsapp'
+import { trackEvent, trackLead, trackPhoneClick, trackWhatsAppClick } from '@/lib/analytics'
 
 type QuoteFields = {
   name: string
@@ -59,8 +60,14 @@ export function QuoteForm() {
   const [errors, setErrors] = useState<FieldErrors>({})
   const [sent, setSent] = useState(false)
   const formId = useId()
+  const started = useRef(false)
 
   const update = <K extends keyof QuoteFields>(field: K, value: QuoteFields[K]) => {
+    if (!started.current) {
+      started.current = true
+      trackEvent('form_start', { location: 'formulario' })
+    }
+
     setValues((current) => ({ ...current, [field]: value }))
     setErrors((current) => ({ ...current, [field]: undefined }))
   }
@@ -70,8 +77,13 @@ export function QuoteForm() {
 
     const nextErrors = validate(values)
     setErrors(nextErrors)
-    if (Object.keys(nextErrors).length > 0) return
 
+    if (Object.keys(nextErrors).length > 0) {
+      trackEvent('form_error', { fields: Object.keys(nextErrors).join(',') })
+      return
+    }
+
+    trackLead(values.service, values.city.trim())
     window.open(whatsappLink(buildMessage(values)), '_blank', 'noopener,noreferrer')
     setSent(true)
   }
@@ -88,11 +100,12 @@ export function QuoteForm() {
             id="orcamento-titulo"
             className="mt-4 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl"
           >
-            Pronto para renovar o seu espaço?
+            Peça seu orçamento grátis agora
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-navy-100">
-            Preencha os dados e a gente continua a conversa no WhatsApp. A visita técnica e o
-            orçamento são gratuitos, sem compromisso.
+            Leva menos de um minuto. Preenche os dados e a conversa continua direto no WhatsApp, com
+            a sua mensagem já pronta. A visita técnica e o orçamento não custam nada e não geram
+            compromisso.
           </p>
 
           <div className="mt-10 space-y-4">
@@ -102,15 +115,20 @@ export function QuoteForm() {
               rel="noopener noreferrer"
               size="lg"
               className="w-full sm:w-auto"
+              onClick={() => trackWhatsAppClick('orcamento')}
             >
               <WhatsAppIcon className="h-5 w-5" />
-              Chamar direto no WhatsApp
+              Prefiro chamar direto no WhatsApp
             </LinkButton>
 
             <p className="flex items-center gap-3 text-sm text-navy-100">
               <PhoneIcon className="h-5 w-5" />
               Prefere ligar?{' '}
-              <a href={company.phone.href} className="font-bold text-white underline-offset-4 hover:underline">
+              <a
+                href={company.phone.href}
+                onClick={() => trackPhoneClick('orcamento')}
+                className="font-bold text-white underline-offset-4 hover:underline"
+              >
                 {company.phone.display}
               </a>
             </p>
@@ -240,13 +258,13 @@ export function QuoteForm() {
 
             <ActionButton type="submit" size="lg" className="mt-7 w-full">
               <WhatsAppIcon className="h-5 w-5" />
-              Enviar e falar no WhatsApp
+              Enviar e receber meu orçamento
             </ActionButton>
 
             <p aria-live="polite" className="mt-4 text-center text-sm text-ink-mute">
               {sent
-                ? 'Tudo certo! Abrimos o WhatsApp com a sua mensagem pronta. Se não abriu, toque no botão verde.'
-                : 'Seus dados vão direto para o WhatsApp da IMM. Não enviamos spam.'}
+                ? 'Tudo certo! Abrimos o WhatsApp com a sua mensagem pronta. Se a janela não abriu, use o botão de WhatsApp no canto da tela.'
+                : 'Seus dados vão direto para o WhatsApp da IMM e servem só para montar o orçamento. Sem spam e sem repasse a terceiros.'}
             </p>
           </form>
         </Reveal>

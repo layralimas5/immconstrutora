@@ -25,7 +25,7 @@ export function ServiceArea() {
               {company.areas.map((area) => (
                 <li
                   key={area}
-                  className="rounded-full border border-navy-100 bg-white px-4 py-2 text-sm font-semibold text-navy"
+                  className="rounded-full border border-navy-100 bg-white px-4 py-2 text-sm font-semibold text-navy transition-colors duration-300 hover:animate-pulse-soft hover:border-navy hover:bg-navy-50 motion-reduce:hover:animate-none"
                 >
                   {area}
                 </li>
