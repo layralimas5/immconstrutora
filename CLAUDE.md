@@ -34,6 +34,13 @@ Tom de voz, identidade visual e dados da marca vêm de `_memoria/` e
 
 ## Deploy
 
-Vercel. Hoje o site antigo está em `immreformas.vercel.app`. Ao apontar para
-domínio próprio, trocar a URL em `index.html`, `robots.txt`, `sitemap.xml` e
-`company.siteUrl`.
+Netlify, configurada em `netlify.toml`. Repositório:
+`github.com/layralimas5/immconstrutora`.
+
+As variáveis de medição ficam no painel da Netlify, não no código. O Vite as
+injeta no bundle durante o build, então toda mudança de variável exige um novo
+deploy. Passo a passo em `docs/medicao.md`.
+
+Ao apontar para domínio próprio, trocar a URL em `index.html`,
+`public/robots.txt`, `public/sitemap.xml`, `public/politica-de-privacidade.html`
+e `company.siteUrl`.
