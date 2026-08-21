@@ -4,7 +4,7 @@
  * Carrega o gtag.js sob demanda e só se houver ID configurado, então em
  * ambiente sem variável de ambiente nada é baixado e nada é enviado.
  *
- * Configuração (Vercel > Settings > Environment Variables):
+ * Configuração (Netlify > Site configuration > Environment variables):
  * - VITE_GA4_ID              G-XXXXXXXXXX     comportamento e funil
  * - VITE_ADS_ID              AW-123456789     conta do Google Ads
  * - VITE_ADS_LEAD_LABEL      xxxxxxxxxxxxx    conversão do formulário
