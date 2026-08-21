@@ -69,7 +69,7 @@ export const company = {
     handle: '@immreformas',
     href: 'https://instagram.com/immreformas',
   },
-  siteUrl: 'https://immreformas.vercel.app',
+  siteUrl: 'https://immconstrutora.netlify.app',
   hours: 'Segunda a sexta, 8h às 18h. Sábado, 8h às 12h.',
 } as const
 

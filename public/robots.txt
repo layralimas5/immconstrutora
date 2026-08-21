@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://immreformas.vercel.app/sitemap.xml
+Sitemap: https://immconstrutora.netlify.app/sitemap.xml

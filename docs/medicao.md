@@ -79,6 +79,6 @@ o formulário. Se poucos chegam lá, o problema é a copy acima.
   avaliação aos últimos clientes. Isso ajuda em conversão e em SEO local ao
   mesmo tempo.
 - **Fotos antes e depois.** É a prova visual que mais converte em reforma.
-- **Domínio próprio.** Ao sair de `immreformas.vercel.app`, trocar a URL em
+- **Domínio próprio.** Ao sair de `immconstrutora.netlify.app`, trocar a URL em
   `index.html`, `public/robots.txt`, `public/sitemap.xml`,
   `public/politica-de-privacidade.html` e `company.siteUrl`.

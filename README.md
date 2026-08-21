@@ -53,7 +53,7 @@ institucional. Tokens definidos em `src/index.css` (`@theme`).
 - JSON-LD `LocalBusiness` + `HousePainter` e `FAQPage`
 - `public/robots.txt` e `public/sitemap.xml`
 
-Ao publicar em domínio próprio, trocar `https://immreformas.vercel.app` em
+Ao publicar em domínio próprio, trocar `https://immconstrutora.netlify.app` em
 `index.html`, `robots.txt`, `sitemap.xml` e `src/content/site.ts` (`company.siteUrl`).
 
 ## Pendências de conteúdo
