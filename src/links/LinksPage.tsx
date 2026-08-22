@@ -45,11 +45,11 @@ function Identity() {
   return (
     <header className="flex flex-col items-center text-center">
       <img
-        src="/img/logo.png"
+        src="/img/logo-avatar.png"
         alt={`Logo da ${company.name}`}
-        width={96}
-        height={96}
-        className="h-24 w-24 rounded-2xl bg-white object-contain p-2 shadow-lift"
+        width={512}
+        height={512}
+        className="h-28 w-28 rounded-full shadow-lift ring-2 ring-white/15"
       />
 
       <p className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1 text-xs font-semibold tracking-wide text-white/70 uppercase">

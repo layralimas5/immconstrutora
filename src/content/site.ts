@@ -62,8 +62,8 @@ export const company = {
     href: `https://wa.me/${RAW_PHONE}`,
   },
   phone: {
-    display: '(27) 2912-2100',
-    href: 'tel:+552729122100',
+    display: '(27) 99737-5452',
+    href: `tel:+${RAW_PHONE}`,
   },
   instagram: {
     handle: '@immreformas',

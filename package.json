@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "img": "node scripts/otimizar-imagens.mjs",
+    "avatar": "node scripts/gerar-avatar-logo.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
