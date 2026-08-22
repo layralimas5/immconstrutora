@@ -12,6 +12,13 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# A página de links da bio é servida em /links, sem o .html no endereço. É o
+# link que fica na bio do Instagram, então precisa ser curto e fácil de ditar.
+[[redirects]]
+  from = "/links"
+  to = "/links.html"
+  status = 200
+
 # Assets com hash no nome podem ser cacheados para sempre: quando o conteúdo
 # muda, o nome do arquivo muda junto.
 [[headers]]

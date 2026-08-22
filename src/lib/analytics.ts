@@ -31,6 +31,8 @@ export type ClickLocation =
   | 'formulario'
   | 'rodape'
   | 'botao_flutuante'
+  /** Página de links da bio do Instagram (`/links`). */
+  | 'bio'
 
 let ready = false
 
