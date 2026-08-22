@@ -13,5 +13,12 @@ export default defineConfig({
   build: {
     target: 'es2020',
     cssCodeSplit: true,
+    rollupOptions: {
+      /** Duas páginas: a landing e a página de links da bio do Instagram. */
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        links: fileURLToPath(new URL('./links.html', import.meta.url)),
+      },
+    },
   },
 })

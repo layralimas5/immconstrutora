@@ -140,3 +140,35 @@ export function TeamIcon({ className, ...props }: IconProps) {
     </svg>
   )
 }
+
+export function StarIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className} {...props}>
+      <path d="m12 2.6 2.9 5.88 6.5.95-4.7 4.58 1.11 6.47L12 17.42 6.19 20.48l1.1-6.47-4.69-4.58 6.5-.95L12 2.6Z" />
+    </svg>
+  )
+}
+
+/** G do Google, nas quatro cores oficiais. Usado no bloco de avaliação. */
+export function GoogleIcon({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} {...props}>
+      <path
+        fill="#4285F4"
+        d="M21.6 12.23c0-.68-.06-1.34-.18-1.96H12v3.72h5.38a4.6 4.6 0 0 1-2 3.02v2.5h3.24c1.89-1.74 2.98-4.3 2.98-7.28Z"
+      />
+      <path
+        fill="#34A853"
+        d="M12 22c2.7 0 4.96-.9 6.62-2.43l-3.24-2.51c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.76-5.59-4.12H3.07v2.59A10 10 0 0 0 12 22Z"
+      />
+      <path
+        fill="#FBBC05"
+        d="M6.41 13.9a6 6 0 0 1 0-3.8V7.51H3.07a10 10 0 0 0 0 8.98l3.34-2.59Z"
+      />
+      <path
+        fill="#EA4335"
+        d="M12 5.98c1.47 0 2.79.5 3.83 1.5l2.87-2.87C16.95 2.99 14.7 2 12 2a10 10 0 0 0-8.93 5.51l3.34 2.59C7.2 7.74 9.4 5.98 12 5.98Z"
+      />
+    </svg>
+  )
+}

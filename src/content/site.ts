@@ -71,6 +71,19 @@ export const company = {
   },
   siteUrl: 'https://immconstrutora.netlify.app',
   hours: 'Segunda a sexta, 8h às 18h. Sábado, 8h às 12h.',
+  /**
+   * Perfil da Empresa no Google.
+   *
+   * Enquanto a verificação do perfil não sai, `reviewHref` aponta para a busca
+   * no Maps. Assim que o perfil estiver no ar, trocar pelo link curto de
+   * avaliação (Painel > Pedir avaliações), no formato:
+   * https://g.page/r/CODIGO/review
+   */
+  google: {
+    reviewHref:
+      'https://www.google.com/maps/search/?api=1&query=IMM+Reformas+e+Pinturas+Vila+Velha+ES',
+    hasVerifiedProfile: false,
+  },
 } as const
 
 export const defaultWhatsappMessage =
