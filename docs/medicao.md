@@ -26,19 +26,41 @@ dá para publicar antes de configurar.
    - o **ID de conversão**, formato `AW-123456789` (é o mesmo nas duas)
    - o **label**, a string depois da barra
 
-## 2. Cadastrar na Vercel
+## 2. Cadastrar na Netlify
 
-Projeto > Settings > Environment Variables. Marcar Production e Preview.
+Site `immconstrutora` > Site configuration > Environment variables > Add a
+single variable. Escopo Production.
+
+Valores reais da conta, coletados em 01/09/2026:
 
 | Variável                   | Valor                          |
 | -------------------------- | ------------------------------ |
-| `VITE_GA4_ID`              | `G-XXXXXXXXXX`                 |
-| `VITE_ADS_ID`              | `AW-123456789`                 |
-| `VITE_ADS_LEAD_LABEL`      | label da conversão do formulário |
-| `VITE_ADS_WHATSAPP_LABEL`  | label da conversão do WhatsApp |
+| `VITE_GA4_ID`              | `G-5L1NDRZHRQ`                 |
+| `VITE_ADS_ID`              | `AW-17891940320`               |
+| `VITE_ADS_LEAD_LABEL`      | `_gZYCLOV0uUcEOCvxdNC`         |
+| `VITE_ADS_WHATSAPP_LABEL`  | `-ROLCMn21uUcEOCvxdNC`         |
 
-Depois de salvar, **fazer um novo deploy**. As variáveis entram no bundle na
-hora do build, não em tempo de execução.
+Os labels vão **sozinhos**, sem o `AW-17891940320` e sem a barra. O
+`analytics.ts` monta o `send_to` como `${ADS_ID}/${label}`. Colar o
+`send_to` inteiro no label quebra a medição em silêncio.
+
+Não são segredo: os quatro vão para o bundle do navegador e são públicos em
+qualquer site que use gtag.
+
+Depois de salvar, **Deploys > Trigger deploy > Clear cache and deploy site**.
+As variáveis entram no bundle na hora do build, não em tempo de execução, então
+deploy com cache antigo republica o site sem elas.
+
+### Ações de conversão correspondentes
+
+| Ação no Google Ads    | Meta                       | Origem | Valor    |
+| --------------------- | -------------------------- | ------ | -------- |
+| Orçamento pelo site   | Enviar formulários de lead | Site   | R$ 1.500 |
+| Clique no WhatsApp    | Contatos                   | Site   | R$ 1,00  |
+
+Outras duas ações existem na conta e não dependem do site: `Ligação do
+anúncio` (chamadas a partir de anúncios) e `Local actions - Directions`
+(Google Meu Negócio, fora das metas da conta).
 
 ## 3. O que já é medido
 
