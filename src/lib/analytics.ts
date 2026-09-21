@@ -54,9 +54,13 @@ export function initAnalytics(): void {
   }
 
   window.dataLayer = window.dataLayer ?? []
-  /** Enfileira as chamadas até o gtag.js carregar e assumir o lugar deste shim. */
-  window.gtag = (command: GtagCommand, ...args: readonly unknown[]) => {
-    window.dataLayer?.push([command, ...args])
+  /**
+   * Fila que o gtag.js consome. Ele só processa objetos `arguments`: um array
+   * comum entra no dataLayer e é ignorado, e nada chega ao Google.
+   */
+  window.gtag = function gtagShim() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments)
   }
 
   const script = document.createElement('script')
